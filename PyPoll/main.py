@@ -29,7 +29,7 @@ with open(election_path, "r") as f:
         candidate_votes[candidate] = candidate_votes[candidate] + 1
 print("Election Results")
 print("-----------------------------------")
-print("Total Votes: " + str(totalnum_votes))
+print(f"Total Votes: " + str(totalnum_votes))
 print("-----------------------------------")
 # print the results
 with open(file_output, "w",newline = '' ) as text:
@@ -61,7 +61,7 @@ with open(file_output, "w",newline = '' ) as text:
       text.write("---------------------------------------\n")
 
 print("----------------------------")
-print("Winner: " + winning_candidate)
+print(f"Winner: " + winning_candidate)
 print("----------------------------")
 
 
