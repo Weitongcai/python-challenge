@@ -12,7 +12,7 @@ profit_change = 0
 months = []
 profit_changes = []
 
-
+# Read input file path
 with open(budget_path, 'r') as f:
     reader = csv.reader(f, delimiter = ',')
     header_row = next(reader)
@@ -33,13 +33,13 @@ with open(budget_path, 'r') as f:
 # average change in "Profit/Losses" over the entire period
 average_change = round(sum(profit_changes)/len(profit_changes),2)
 
-#greatest increase and decrease in profit
+#greatest increase and decrease in profit (date and amount) over the entire period
 greatest_increase = max(profit_changes)
 greatest_decrease = min(profit_changes)
 greatest_increase_date = months[profit_changes.index(greatest_increase)]
 greatest_decrease_date = months[profit_changes.index(greatest_decrease)]
 
-# Print out
+# Print out the results as requited
 print("Financial Analysis")
 print("--------------------------------")
 print(f"Total Months: {totalnum_month}")
@@ -48,6 +48,7 @@ print(f"Average Change: ${average_change}")
 print(f"Greatest Increase in Profits: {greatest_increase_date} (${greatest_increase})")
 print(f"Greatest Decrease in Profits: {greatest_decrease_date} (${greatest_decrease})")
 
+# output the analysis results to file output as text
 with open(file_output, "w", newline= "") as text :
      text.write("Financial Analysis\n")
      text.write("-------------------------------\n")

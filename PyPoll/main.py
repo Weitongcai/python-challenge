@@ -1,8 +1,8 @@
 import os
 import csv
-# file path
+# Input file path
 election_path = os.path.join("Resources", "election_data.csv")
-# file output
+# Output file path
 file_output = "analysis/election_analysis.txt"
 
 totalnum_votes = 0
@@ -12,9 +12,10 @@ candidate_votes = {}
 winner = ""
 winning_count = 0
 
-
+# Read input file path
 with open(election_path, "r") as f:
     reader = csv.reader(f, delimiter = ',')
+    # Stores the header row
     header_row = next(reader)
 
     for row in reader :
@@ -27,13 +28,15 @@ with open(election_path, "r") as f:
            candidate_votes[candidate] = 0
 
         candidate_votes[candidate] = candidate_votes[candidate] + 1
+
+# Print the election results        
 print("Election Results")
 print("-----------------------------------")
 print(f"Total Votes: " + str(totalnum_votes))
 print("-----------------------------------")
-# print the results
-with open(file_output, "w",newline = '' ) as text:
-     
+
+# Output the results to election_analysis.txt
+with open(file_output, "w",newline = '' ) as text:    
       text.write("Election Results\n")
       text.write("-----------------------------------\n")
       text.write("Total Votes: " + str(totalnum_votes)+ "\n")
@@ -48,10 +51,10 @@ with open(file_output, "w",newline = '' ) as text:
           if (votes > winning_count) :
               winning_count = votes
               winning_candidate = candidate
-
-          voter_results = (f'{candidate}: {vote_percentage:.3f}% ({votes})') 
+        #Print the voter and his/her results as required
+          voter_results = (f'{candidate}: {vote_percentage:.3f}% ({votes})')  
           print(voter_results)
-        # save results into file_output
+        # Output the voter and his/her results to election_analysis.txt
           text.write(voter_results + "\n")
 
 
@@ -59,7 +62,7 @@ with open(file_output, "w",newline = '' ) as text:
       text.write("\n---------------------------------------\n")
       text.write("Winner: " + winning_candidate + "\n")
       text.write("---------------------------------------\n")
-
+# Print the winner results as required
 print("----------------------------")
 print(f"Winner: " + winning_candidate)
 print("----------------------------")
