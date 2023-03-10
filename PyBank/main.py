@@ -2,6 +2,7 @@ import os
 import csv
 
 budget_path = os.path.join("Resources", "budget_data.csv")
+file_output = "PYBANK/analysis/analysis_text_files.txt"
 
 totalnum_month = 0
 total_profit = 0
